@@ -1,4 +1,6 @@
-exports.seed = async function(knex) {
+'use strict';
+
+exports.seed = async function seed(knex) {
   await knex('locations').del();
 
   return knex('locations').insert([

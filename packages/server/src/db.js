@@ -1,3 +1,5 @@
+'use strict';
+
 const Knex = require('knex');
 const knexfile = require('../db/knexfile');
 

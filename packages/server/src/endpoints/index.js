@@ -1,3 +1,7 @@
+'use strict';
+
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
 const fs = require('fs');
 
 const allRoutes = [];

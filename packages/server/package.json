@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon src/main.js",
+    "lint": "eslint .",
     "db": "knex --cwd db"
   },
   "dependencies": {
@@ -12,5 +13,10 @@
     "nodemon": "^1.18.11",
     "objection": "^1.6.8",
     "pg": "^7.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2"
   }
 }

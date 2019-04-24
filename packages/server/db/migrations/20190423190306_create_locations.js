@@ -1,4 +1,6 @@
-exports.up = async function(knex) {
+'use strict';
+
+exports.up = async function up(knex) {
   return knex.schema.createTable('locations', (table) => {
     table.bigIncrements();
     table.string('lat').notNullable();
@@ -7,6 +9,6 @@ exports.up = async function(knex) {
   });
 };
 
-exports.down = async function(knex) {
-  return knex.dropTable('locations');
+exports.down = async function down(knex) {
+  return knex.schema.dropTable('locations');
 };
