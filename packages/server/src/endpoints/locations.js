@@ -1,8 +1,11 @@
+const db = require('../db');
+
 const getLocations = {
   method: 'GET',
   path: '/locations',
-  handler() {
-    return 'i get locations';
+  async handler() {
+    const locations = await db.select().from('locations');
+    return locations;
   },
 };
 
