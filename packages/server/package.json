@@ -4,10 +4,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "nodemon src/main.js",
+    "start": "NODE_ENV=development nodemon src/main.js",
     "test": "jest",
     "lint": "eslint .",
-    "db": "knex --cwd db"
+    "db": "knex --cwd db",
+    "migrate": "yarn db migrate:latest --env development && yarn db migrate:latest --env test"
   },
   "dependencies": {
     "hapi": "^18.1.0",
