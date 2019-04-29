@@ -5,7 +5,7 @@ import { ajax } from 'rxjs/ajax';
 
 const fetchLocationsEpic = action$ => action$.pipe(
   ofType(LOCATIONS_ACTIONS.FETCH_LOCATIONS),
-  mergeMap(action => ajax.getJSON('http://localhost:5000/locations').pipe(
+  mergeMap(action => ajax.getJSON(`${process.env.REACT_APP_URL_PREFIX}/locations`).pipe(
     map(response => setLocations(response)),
   )),
 );
