@@ -1,13 +1,12 @@
 Galavanting Gnome Firmware
 ==========================
+This project uses [Platform.IO][platform-io]. Follow it's [setup instructions][pio-setup] to get started.
 
-Setup
------
+Caveats
+-------
+I have not been able to program the leonardo or my uno without using an [USBTinyISP][usbtiny]. I have not been able to
+get the normal usb programming working outside the Arduino IDE.
 
-### OSX
-Install the system level dependencies
-
-```bash
-brew install cmake picocom
-brew cask install arduino
-```
+[platform-io]: https://platformio.org/
+[pio-setup]: https://docs.platformio.org/en/latest/installation.html
+[usbtiny]: https://www.adafruit.com/product/46
