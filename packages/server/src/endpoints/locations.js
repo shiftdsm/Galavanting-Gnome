@@ -14,9 +14,7 @@ const getLocations = {
 const postLocation = {
   method: 'POST',
   path: '/locations',
-  async handler(request, h) {
-    const { payload } = request;
-
+  async handler({ payload }, h) {
     await db('locations').insert({
       lat: payload.lat,
       lon: payload.lon,
