@@ -5,8 +5,6 @@ module.exports = {
     client: 'postgresql',
     connection: {
       database: 'galavanting_gnome_dev',
-      user: 'postgres',
-      password: 'postgres',
     },
     pool: {
       min: 2,
