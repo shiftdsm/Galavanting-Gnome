@@ -9,6 +9,7 @@
     "db": "knex --cwd db"
   },
   "dependencies": {
+    "@hapi/joi": "^15.0.2",
     "hapi": "^18.1.0",
     "knex": "^0.16.5",
     "nodemon": "^1.18.11",
