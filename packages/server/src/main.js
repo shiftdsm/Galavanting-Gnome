@@ -14,6 +14,7 @@ const init = async () => {
     routes: {
       cors: true,
     },
+    debug: { request: ['error'] },
   });
 
   const swaggerOptions = {
