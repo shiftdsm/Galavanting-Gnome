@@ -1,7 +1,7 @@
 'use strict';
 
-const db = require('../db');
 const Joi = require('@hapi/joi');
+const Repo = require('../db');
 
 const getLocations = {
   method: 'GET',
@@ -23,8 +23,7 @@ const getLocations = {
     },
   },
   async handler() {
-    const locations = await db.select().from('locations');
-    return locations;
+    return Repo.getLocations();
   },
 };
 
@@ -41,10 +40,7 @@ const postLocation = {
     },
   },
   async handler({ payload }, h) {
-    await db('locations').insert({
-      lat: payload.lat,
-      lon: payload.lon,
-    });
+    await Repo.addLocation(payload);
 
     return h.response().code(201);
   },
