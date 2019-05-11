@@ -22,5 +22,4 @@ class LocationRepository {
   }
 }
 
-
 module.exports = LocationRepository;
