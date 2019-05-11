@@ -15,8 +15,6 @@ SoftwareSerial *fonaSerial = &fonaSS;
 Adafruit_FONA fona = Adafruit_FONA(FONA_RTS);
 
 void setup() {
-    while (!Serial);
-
     Serial.begin(9600);
     Serial.println(F("Galavanting Gnome"));
 
