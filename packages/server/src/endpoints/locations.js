@@ -1,7 +1,7 @@
 'use strict';
 
-const db = require('../db');
 const Joi = require('@hapi/joi');
+const db = require('../db');
 
 const getLocations = {
   method: 'GET',
