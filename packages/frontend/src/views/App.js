@@ -1,12 +1,17 @@
 import React from 'react';
-import LocationList from './LocationList';
+// import LocationList from './LocationList';
+import Typography from '@material-ui/core/Typography';
+import GnomeMap from './GnomeMap';
 
-const App = () => (
-  <div>
-    <h1>Hello</h1>
+const App = (props) => {
+  return (
+    <div>
+      <Typography variant="h1" gutterBottom>Galavanting Gnome</Typography>
 
-    <LocationList />
-  </div>
-);
+      <GnomeMap />
+      {/* <LocationList /> */}
+    </div>
+  );
+};
 
 export default App;
