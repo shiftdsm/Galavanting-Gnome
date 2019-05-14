@@ -12,7 +12,7 @@ export default class GnomeMap extends React.Component {
     const position = [this.state.lat, this.state.lng];
 
     return (
-      <Map center={position} zoom={this.state.zoom} style={{ height: '50vh' }}>
+      <Map center={position} zoom={this.state.zoom} style={{ height: '60vh' }}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
