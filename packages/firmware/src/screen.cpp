@@ -3,6 +3,7 @@
 void LcdInitialize() {
     lcd.backlight();
     lcd.begin(16, 2);
+    lcd.clear();
     lcd.home();
 
     lcd.createChar(BAT_EMPTY, empty);
