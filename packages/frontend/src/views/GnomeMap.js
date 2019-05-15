@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Map, TileLayer, Polyline } from 'react-leaflet';
 
 const GnomeMap = (props) => (
-  <Map center={props.locations[0]} zoom={8} style={{ height: '60vh' }}>
+  <Map center={props.locations[0]} zoom={6} style={{ height: '60vh' }}>
     <TileLayer
       attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
