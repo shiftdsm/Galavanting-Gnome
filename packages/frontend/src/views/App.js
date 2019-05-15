@@ -1,11 +1,10 @@
 import React from 'react';
-// import LocationList from './LocationList';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import GnomeMap from './GnomeMap';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = () => ({
   title: {
     textAlign: 'center',
   },
@@ -45,8 +44,6 @@ const App = (props) => {
           </Grid>
         </Grid>
       </div>
-
-      {/* <LocationList /> */}
     </div>
   );
 };
