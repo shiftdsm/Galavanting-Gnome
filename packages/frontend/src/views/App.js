@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import GnomeMap from './GnomeMap';
 import { withStyles } from '@material-ui/core/styles';
+import CreditList from './CreditList';
 
 const styles = () => ({
   title: {
@@ -10,6 +11,7 @@ const styles = () => ({
   },
   about: {
     marginTop: '2.5rem',
+    marginBottom: '2.5rem',
   },
   aboutBody: {
     fontSize: '1.15rem',
@@ -41,6 +43,8 @@ const App = (props) => {
               unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam
               dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
             </Typography>
+
+            <CreditList />
           </Grid>
         </Grid>
       </div>
