@@ -23,7 +23,8 @@ const getLocations = {
     },
   },
   async handler() {
-    const locations = await db.select().from('locations');
+    // need to make seed data have different times
+    const locations = await db.select().from('locations').orderBy('id', 'desc');
     return locations;
   },
 };
