@@ -15,6 +15,20 @@ module.exports = {
     },
   },
 
+  test: {
+    client: 'postgresql',
+    connection: {
+      database: 'galavanting_gnome_test',
+    },
+    pool: {
+      min: 2,
+      max: 10,
+    },
+    migrations: {
+      tableName: 'knex_migrations',
+    },
+  },
+
   staging: {
     client: 'postgresql',
     connection: {

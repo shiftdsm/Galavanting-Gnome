@@ -4,9 +4,11 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "nodemon src/main.js",
+    "start": "NODE_ENV=development nodemon src/main.js",
     "lint": "eslint .",
-    "db": "knex --cwd db"
+    "db": "knex --cwd db",
+    "test": "NODE_ENV=test jest",
+    "migrate": "yarn db migrate:latest --env development && yarn db migrate:latest --env test"
   },
   "dependencies": {
     "@hapi/joi": "^15.0.2",
@@ -22,6 +24,7 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.2"
+    "eslint-plugin-import": "^2.17.2",
+    "jest": "^24.8.0"
   }
 }
