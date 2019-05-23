@@ -25,6 +25,10 @@ SoftwareSerial *fonaSerial = &fonaSS;
 
 Adafruit_FONA fona = Adafruit_FONA(FONA_RTS);
 
+unsigned long DELAY_TIME = 60 * 60; // 1 minute
+unsigned long delayStart = 0;
+bool delayRunning = false;
+
 void setup() {
     #ifdef GNOME_DEBUG
     #warning "Debug mode is on"
@@ -68,6 +72,9 @@ void setup() {
     Serial.println(F("Enabling GPS..."));
     fona.enableGPS(true);
     lcd.clear();
+
+    delayStart = millis();
+    delayRunning = true;
 }
 
 static float i = 100.0;
@@ -81,6 +88,12 @@ void loop() {
     delay(2000);
 
     i--;
+
+    if (delayRunning && ((millis() - delayStart) >= DELAY_TIME)) {
+        delayStart += DELAY_TIME;
+
+        sendLocation(&fona);
+    }
     // delay(2000);
 
     // gps_loc_t loc = getGPS(&fona);
@@ -94,8 +107,7 @@ void loop() {
     //
     //     Serial.print(F("GPS speed KPH:"));
     //     Serial.println(loc.speed_kph);
-    //
-    //     Serial.print(F("GPS speed MPH:"));
+    // //     Serial.print(F("GPS speed MPH:"));
     //     Serial.println(loc.speed_mph);
     //
     //     Serial.print(F("GPS heading:"));
