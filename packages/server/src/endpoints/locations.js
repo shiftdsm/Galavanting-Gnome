@@ -12,8 +12,8 @@ const getLocations = {
       schema: Joi.array().items(
         Joi.object({
           id: Joi.any().required(),
-          lat: Joi.string().required(),
-          lon: Joi.string().required(),
+          lat: Joi.number().required(),
+          lon: Joi.number().required(),
         }),
       ),
       modify: true,
@@ -36,8 +36,8 @@ const postLocation = {
     tags: ['api'],
     validate: {
       payload: {
-        lat: Joi.string().required(),
-        lon: Joi.string().required(),
+        lat: Joi.number().required(),
+        lon: Joi.number().required(),
       },
     },
   },

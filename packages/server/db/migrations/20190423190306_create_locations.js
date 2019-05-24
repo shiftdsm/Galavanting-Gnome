@@ -3,8 +3,8 @@
 exports.up = async function up(knex) {
   return knex.schema.createTable('locations', (table) => {
     table.bigIncrements();
-    table.string('lat').notNullable();
-    table.string('lon').notNullable();
+    table.float('lat').notNullable();
+    table.float('lon').notNullable();
     table.timestamps(false, true);
   });
 };
