@@ -1,6 +1,7 @@
 #ifdef GNOME_DEBUG
 #define ADAFRUIT_FONA_DEBUG
 #endif
+#define ADAFRUIT_FONA_DEBUG
 
 #include <Arduino.h>
 #include <LiquidCrystal.h>
@@ -13,19 +14,20 @@
 #ifndef GNOME_DEBUG
 #undef ADAFRUIT_FONA_DEBUG
 #endif
+#define ADAFRUIT_FONA_DEBUG
 
 #define FONA_RTS 8
 #define FONA_PS 9
-#define FONA_KEY 10
-#define FONA_RX 11
-#define FONA_TX 12
+#define FONA_KEY 12
+#define FONA_RX 10
+#define FONA_TX 11
 
 SoftwareSerial fonaSS = SoftwareSerial(FONA_TX, FONA_RX);
 SoftwareSerial *fonaSerial = &fonaSS;
 
 Adafruit_FONA fona = Adafruit_FONA(FONA_RTS);
 
-unsigned long DELAY_TIME = 60 * 60; // 1 minute
+unsigned long DELAY_TIME = 100 * 60; // 1 minute
 unsigned long delayStart = 0;
 bool delayRunning = false;
 
@@ -68,6 +70,9 @@ void setup() {
         while(1);
     }
     Serial.println(F("FONA is OK"));
+
+    fonaSerial->println("AT+COPS?");
+    fonaSerial->println("AT+CSQ");
     
     Serial.println(F("Enabling GPS..."));
     fona.enableGPS(true);
@@ -77,45 +82,14 @@ void setup() {
     delayRunning = true;
 }
 
-static float i = 100.0;
-
 void loop() {
-    if (i < 0) {
-        i = 100;
-    }
-
-    DisplayStatus(i, random(0, 2) ? true : false);
-    delay(2000);
-
-    i--;
-
     if (delayRunning && ((millis() - delayStart) >= DELAY_TIME)) {
         delayStart += DELAY_TIME;
 
         sendLocation(&fona);
-    }
-    // delay(2000);
 
-    // gps_loc_t loc = getGPS(&fona);
-    //
-    // if (loc.success) {
-    //     Serial.print(F("GPS lat:"));
-    //     Serial.println(loc.latitude, 6);
-    //
-    //     Serial.print(F("GPS long:"));
-    //     Serial.println(loc.longitude, 6);
-    //
-    //     Serial.print(F("GPS speed KPH:"));
-    //     Serial.println(loc.speed_kph);
-    // //     Serial.print(F("GPS speed MPH:"));
-    //     Serial.println(loc.speed_mph);
-    //
-    //     Serial.print(F("GPS heading:"));
-    //     Serial.println(loc.heading);
-    //
-    //     Serial.print(F("GPS altitude:"));
-    //     Serial.println(loc.altitude);
-    // } else {
-    //     Serial.println(F("Waiting for FONA GPS fix..."));
-    // }
+        uint16_t percentage;
+        fona.getBattPercent(&percentage);
+        DisplayStatus(percentage, random(0, 2) ? true : false);
+    }
 }
