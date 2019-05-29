@@ -21,8 +21,9 @@ module.exports = {
       database: 'galavanting_gnome_test',
     },
     pool: {
-      min: 2,
+      min: 0,
       max: 10,
+      idleTimeoutMillis: 100,
     },
     migrations: {
       tableName: 'knex_migrations',
