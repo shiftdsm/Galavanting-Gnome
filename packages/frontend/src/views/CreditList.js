@@ -12,6 +12,10 @@ class CreditList extends React.Component {
     dialogOpen: false,
   };
 
+  constructor(props) {
+    super(props);
+  }
+
   handleClickOpen = () => {
     this.setState({ dialogOpen: true });
   };
@@ -22,7 +26,7 @@ class CreditList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={this.props.className}>
         <Button variant="contained" color="primary" onClick={this.handleClickOpen}>Credits</Button>
 
         <Dialog

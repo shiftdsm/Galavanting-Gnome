@@ -2,7 +2,6 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import GnomeMap from './GnomeMap';
 import { withStyles } from '@material-ui/core/styles';
-// import CreditList from './CreditList';
 import MainText from './MainText';
 
 const styles = () => ({
@@ -29,7 +28,6 @@ const App = (props) => {
 
       <GnomeMap />
       <MainText />
-      {/* <CreditList /> */}
     </div>
   );
 };

@@ -3,25 +3,29 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import CreditList from './CreditList';
 
 const useStyles = makeStyles(theme => ({
-  root: {
+  paper: {
     padding: theme.spacing(3, 2),
     marginTop: theme.spacing(3),
   },
   section: {
     marginBottom: theme.spacing(4),
   },
+  creditButton: {
+    textAlign: 'center',
+    margin: theme.spacing(3, 2),
+  },
 }));
-
 
 
 const MainText = () => {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="md">
-      <Paper className={classes.root}>
+    <Container component="main" maxWidth="md" className={classes.root}>
+      <Paper className={classes.paper}>
         <div className={classes.section}>
           <Typography variant="h4" component="h2" gutterBottom>
             What is a Galavanting  Gnome?
@@ -80,7 +84,7 @@ const MainText = () => {
             The same applies to our short statured friend.
             It is our goal to see the gnome travel as much as possible!
           </Typography>
-          <Typography compoent="p">
+          <Typography component="p">
             If you plan on holding Gulliver for more than a few weeks or have damaged him by accident, do not hesitate to reach out to us for support [support email]
           </Typography>
         </div>
@@ -99,6 +103,8 @@ const MainText = () => {
           </Typography>
         </div>
       </Paper>
+
+      <CreditList className={classes.creditButton} />
     </Container>
   );
 };
