@@ -1,30 +1,20 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import GnomeMap from './GnomeMap';
-import { withStyles } from '@material-ui/core/styles';
 import MainText from './MainText';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
-const styles = () => ({
-  title: {
-    textAlign: 'center',
-  },
-  about: {
-    marginTop: '2.5rem',
-    marginBottom: '2.5rem',
-  },
-  aboutBody: {
-    fontSize: '1.15rem',
-  },
-});
-
-const App = (props) => {
-  const { classes } = props;
-
+const App = () => {
   return (
     <div>
-      <Typography variant="h1" gutterBottom className={classes.title}>
-        Galavanting Gnome
-      </Typography>
+      <AppBar position="static" color="primary">
+        <Toolbar>
+          <Typography variant="h6" component="h1" color="inherit">
+            Galavanting Gnome
+          </Typography>
+        </Toolbar>
+      </AppBar>
 
       <GnomeMap />
       <MainText />
@@ -32,4 +22,4 @@ const App = (props) => {
   );
 };
 
-export default withStyles(styles)(App);
+export default App;
