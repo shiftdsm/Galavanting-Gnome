@@ -34,8 +34,11 @@ const postLocation = {
     tags: ['api'],
     validate: {
       payload: {
-        lat: Joi.number().required(),
-        lon: Joi.number().required(),
+        lat: Joi.number().precision(6).required(),
+        lon: Joi.number().precision(6).required(),
+        kph: Joi.number().precision(6).required(),
+        heading: Joi.number().precision(6).required(),
+        alt: Joi.number().precision(6).required(),
       },
     },
   },

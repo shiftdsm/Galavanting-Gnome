@@ -29,6 +29,9 @@ describe('locations', () => {
       payload: {
         lat: '0',
         lon: '0',
+        kph: 1.5,
+        heading: 100.123,
+        alt: 10.2,
       },
     });
 
