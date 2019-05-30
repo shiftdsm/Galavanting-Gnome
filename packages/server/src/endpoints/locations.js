@@ -1,7 +1,7 @@
 'use strict';
 
 const Joi = require('@hapi/joi');
-const db = require('../db');
+const r = require('rethinkdb');
 
 const getLocations = {
   method: 'GET',
@@ -23,8 +23,10 @@ const getLocations = {
     },
   },
   async handler() {
-    // need to make seed data have different times
-    const locations = await db.select().from('locations').orderBy('id', 'desc');
+    const conn = await r.connect({ db: 'galavanting_gnome_dev' });
+    const locations = await r.table('locations').coerceTo('array').run(conn);
+    await conn.close();
+
     return locations;
   },
 };
@@ -42,10 +44,9 @@ const postLocation = {
     },
   },
   async handler({ payload }, h) {
-    await db('locations').insert({
-      lat: payload.lat,
-      lon: payload.lon,
-    });
+    const conn = await r.connect({ db: 'galavanting_gnome_dev' });
+    await r.table('locations').insert(payload).run(conn);
+    await conn.close();
 
     return h.response().code(201);
   },
