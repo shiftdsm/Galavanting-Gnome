@@ -116,7 +116,8 @@ const MainText = () => {
             Fully Charge
           </Typography>
           <Typography component="p">
-            Despite his sweet solar panel, he gets tired with all his traveling. Ensuring he’s ready to go means that all of his antics are continually tracked.
+            Despite his sweet solar panel, he gets tired with all his traveling.
+            Ensuring he’s ready to go means that all of his antics are continually tracked.
           </Typography>
         </div>
 
@@ -125,7 +126,7 @@ const MainText = () => {
             How do I charge him?
           </Typography>
           <Typography component="p">
-            Look for the charging port located [location] and plug him into an outlet using a [charge cord type]
+            Look for the charging port located [location] and plug him into an outlet using a [charge cord type].
           </Typography>
         </div>
 
@@ -134,7 +135,7 @@ const MainText = () => {
             What if the charger port or solar panel is damaged?
           </Typography>
           <Typography component="p">
-            Contact the Gnome Support team at [support address] for us to attempt retrieval of the gnome or for shipment of replacement hardware
+            Contact the Gnome Support team at [support address] for us to attempt retrieval of the gnome.
           </Typography>
         </div>
 
@@ -143,7 +144,9 @@ const MainText = () => {
             Explore the world!
           </Typography>
           <Typography component="p">
-            The gnome hates sitting around, it drives him a bit crazy. We encourage people to take him to brand new places, experience new things and meet new people. The whole time he travels he will document your adventure, allowing you to view the travels at https://galavanting-gnome.surge.sh/
+            The gnome hates sitting around, it drives him a bit crazy.
+            We encourage people to take him to brand new places, experience new things and meet new people.
+            The whole time he travels he will document your adventure, allowing you to view the travels at https://galavanting-gnome.surge.sh/.
           </Typography>
         </div>
 
@@ -152,7 +155,8 @@ const MainText = () => {
             Socialize your Adventure
           </Typography>
           <Typography component="p">
-            Why travel without saving the memories! Make sure to snap pictures and share your stories to the following outlets:
+            Why travel without saving the memories!
+            Make sure to snap pictures and share your stories to the following outlets:
             Snapchat
             Instagram
           </Typography>
