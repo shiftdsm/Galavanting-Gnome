@@ -104,6 +104,61 @@ const MainText = () => {
         </div>
       </Paper>
 
+      <Paper className={classes.paper}>
+        <div className={classes.section}>
+          <Typography variant="h4" component="h3">
+            I got ahold of the Galavanting Gnome, what now?
+          </Typography>
+        </div>
+
+        <div className={classes.section}>
+          <Typography variant="h5" component="h3">
+            Fully Charge
+          </Typography>
+          <Typography component="p">
+            Despite his sweet solar panel, he gets tired with all his traveling. Ensuring he’s ready to go means that all of his antics are continually tracked.
+          </Typography>
+        </div>
+
+        <div className={classes.section}>
+          <Typography variant="h5" component="h3">
+            How do I charge him?
+          </Typography>
+          <Typography component="p">
+            Look for the charging port located [location] and plug him into an outlet using a [charge cord type]
+          </Typography>
+        </div>
+
+        <div className={classes.section}>
+          <Typography variant="h5" component="h3">
+            What if the charger port or solar panel is damaged?
+          </Typography>
+          <Typography component="p">
+            Contact the Gnome Support team at [support address] for us to attempt retrieval of the gnome or for shipment of replacement hardware
+          </Typography>
+        </div>
+
+        <div className={classes.section}>
+          <Typography variant="h5" component="h3">
+            Explore the world!
+          </Typography>
+          <Typography component="p">
+            The gnome hates sitting around, it drives him a bit crazy. We encourage people to take him to brand new places, experience new things and meet new people. The whole time he travels he will document your adventure, allowing you to view the travels at https://galavanting-gnome.surge.sh/
+          </Typography>
+        </div>
+
+        <div className={classes.section}>
+          <Typography variant="h5" component="h3">
+            Socialize your Adventure
+          </Typography>
+          <Typography component="p">
+            Why travel without saving the memories! Make sure to snap pictures and share your stories to the following outlets:
+            Snapchat
+            Instagram
+          </Typography>
+        </div>
+      </Paper>
+
       <CreditList className={classes.creditButton} />
     </Container>
   );
