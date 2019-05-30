@@ -12,10 +12,6 @@ class CreditList extends React.Component {
     dialogOpen: false,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   handleClickOpen = () => {
     this.setState({ dialogOpen: true });
   };
