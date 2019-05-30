@@ -17,4 +17,5 @@ module.exports = {
   resetMocks: true,
   testEnvironment: 'node',
   watchman: false,
+  globalTeardown: './test-helpers/teardown.js',
 };
