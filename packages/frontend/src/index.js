@@ -6,14 +6,26 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { buildStore } from './store';
 import { fetchLocations } from './store/locations/actions';
+import { ThemeProvider } from '@material-ui/styles'
+import { createMuiTheme } from '@material-ui/core/styles';
 
 const store = buildStore();
 
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#da1b5b',
+    },
+  },
+});
+
 ReactDOM.render(
   <Provider store={store}>
-    <CssBaseline />
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
 
-    <App />
+      <App />
+    </ThemeProvider>
   </Provider>,
   document.getElementById('root')
 );
