@@ -90,7 +90,7 @@ const MainText = () => {
         </div>
 
         <div className={classes.section}>
-          <Typography variant="h5" component="h3" gutterButtom>
+          <Typography variant="h5" component="h3" gutterBottom>
             How do I get a Galavanting Gnome?
           </Typography>
           <Typography component="p">
