@@ -22,7 +22,7 @@ class CreditList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={this.props.className}>
         <Button variant="contained" color="primary" onClick={this.handleClickOpen}>Credits</Button>
 
         <Dialog
