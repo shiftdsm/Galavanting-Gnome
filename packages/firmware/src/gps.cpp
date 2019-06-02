@@ -11,11 +11,14 @@ gps_loc_t getGPS(Adafruit_FONA* fona) {
     return location;
 }
 
-StaticJsonDocument<JSON_OBJECT_SIZE(2)> convertLocation(gps_loc_t location) {
-    StaticJsonDocument<JSON_OBJECT_SIZE(2)> doc;
+StaticJsonDocument<JSON_OBJECT_SIZE(5)> convertLocation(gps_loc_t location) {
+    StaticJsonDocument<JSON_OBJECT_SIZE(5)> doc;
 
     doc["lon"] = location.longitude;
     doc["lat"] = location.latitude;
+    doc["kph"] = location.speed_kph;
+    doc["heading"] = location.heading;
+    doc["alt"] = location.altitude;
 
     return doc;
 }
