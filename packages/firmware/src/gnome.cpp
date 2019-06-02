@@ -7,6 +7,7 @@
 #include <LiquidCrystal.h>
 #include <Adafruit_FONA.h>
 #include <SoftwareSerial.h>
+#include <Automaton.h>
 #include "gps.h"
 #include "screen.h"
 #include "utils.h"
@@ -27,16 +28,13 @@ SoftwareSerial *fonaSerial = &fonaSS;
 
 Adafruit_FONA fona = Adafruit_FONA(FONA_RTS);
 
-unsigned long DELAY_TIME = 100 * 60; // 1 minute
-unsigned long delayStart = 0;
-bool delayRunning = false;
+Atm_timer gpsTimer, displayTimer;
 
 void setup() {
     #ifdef GNOME_DEBUG
-    #warning "Debug mode is on"
     while (!Serial) {};
-    #else
-    #warning "Debug mode is off"
+    gpsTimer.trace(Serial);
+    displayTimer.trace(Serial);
     #endif
 
     Serial.begin(9600);
@@ -78,18 +76,23 @@ void setup() {
     fona.enableGPS(true);
     lcd.clear();
 
-    delayStart = millis();
-    delayRunning = true;
+    gpsTimer.begin(60000)
+        .repeat(ATM_COUNTER_OFF)
+        .onTimer([](int idx, int v, int up) {
+            sendLocation(&fona);
+        })
+        .start();
+
+    displayTimer.begin(1000)
+        .repeat(ATM_COUNTER_OFF)
+        .onTimer([](int idx, int v, int up) {
+            uint16_t percentage;
+            fona.getBattPercent(&percentage);
+            DisplayStatus(percentage, false);
+        })
+        .start();
 }
 
 void loop() {
-    if (delayRunning && ((millis() - delayStart) >= DELAY_TIME)) {
-        delayStart += DELAY_TIME;
-
-        sendLocation(&fona);
-
-        uint16_t percentage;
-        fona.getBattPercent(&percentage);
-        DisplayStatus(percentage, random(0, 2) ? true : false);
-    }
+    automaton.run();
 }
