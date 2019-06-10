@@ -44,5 +44,21 @@ describe('LocationService', () => {
       expect(prevLocation.published_at).not.toBeFalsy();
       expect(newLocation.published_at).toBeFalsy();
     });
+
+    it('should not publish the previous location if the new location is not far away enough', async () => {
+      const location = {
+        lat: 0,
+        lon: 0,
+        kph: 0,
+        heading: 0,
+        alt: 0,
+      };
+      const [prevLocationId] = await db('locations').insert(location).returning('id');
+      await LocationService.addLocation(location);
+
+      const [prevLocation] = await db('locations').select('published_at').where('id', prevLocationId);
+
+      expect(prevLocation.published_at).toBeFalsy();
+    });
   });
 });
