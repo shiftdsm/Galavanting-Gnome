@@ -10,7 +10,22 @@ const LocationService = {
   },
 
   async addLocation(props) {
-    return db('locations').insert(props);
+    return db.transaction(async (tx) => {
+      const lastLocation = await tx('locations')
+        .select('id')
+        .whereNull('published_at')
+        .orderBy('created_at', 'desc')
+        .first();
+
+      if (lastLocation) {
+        await tx('locations').update('published_at', new Date()).where(lastLocation);
+      }
+
+      return tx('locations').insert({
+        ...props,
+        published_at: null,
+      }).returning('id');
+    });
   },
 };
 
