@@ -14,15 +14,16 @@ const LocationService = {
 
   async addLocation(props) {
     return db.transaction(async (tx) => {
-      const lastLocation = await tx('locations')
+      const unpublishedLocations = await tx('locations')
         .select('id', 'lat', 'lon')
         .whereNull('published_at')
-        .orderBy('created_at', 'desc')
-        .first();
+        .orderBy('published_at', 'desc');
 
-      if (this.canPublishLocation(props, lastLocation)) {
-        await tx('locations').update('published_at', new Date()).where(lastLocation);
-      }
+      unpublishedLocations.forEach(async (unpublishedLocation) => {
+        if (this.canPublishLocation(props, unpublishedLocation)) {
+          await tx('locations').update('published_at', new Date()).where(unpublishedLocation);
+        }
+      });
 
       return tx('locations').insert({
         ...props,
