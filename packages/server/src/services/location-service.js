@@ -19,11 +19,15 @@ const LocationService = {
         .whereNull('published_at')
         .orderBy('published_at', 'desc');
 
-      unpublishedLocations.forEach(async (unpublishedLocation) => {
+      const locationIdsToPublish = unpublishedLocations.reduce((locations, unpublishedLocation) => {
         if (this.canPublishLocation(props, unpublishedLocation)) {
-          await tx('locations').update('published_at', new Date()).where(unpublishedLocation);
+          return locations.concat(unpublishedLocation.id);
         }
-      });
+
+        return locations;
+      }, []);
+
+      await tx('locations').update('published_at', new Date()).whereIn('id', locationIdsToPublish);
 
       return tx('locations').insert({
         ...props,
