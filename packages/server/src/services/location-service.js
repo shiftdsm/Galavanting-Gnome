@@ -16,8 +16,7 @@ const LocationService = {
     return db.transaction(async (tx) => {
       const unpublishedLocations = await tx('locations')
         .select('id', 'lat', 'lon')
-        .whereNull('published_at')
-        .orderBy('published_at', 'desc');
+        .whereNull('published_at');
 
       const locationIdsToPublish = unpublishedLocations.reduce((locations, unpublishedLocation) => {
         if (this.canPublishLocation(props, unpublishedLocation)) {
