@@ -23,7 +23,7 @@ void LcdInitialize() {
     lcd.createChar(GPS_NO_LOCK, gps_no_lock);
 }
 
-void DisplayStatus(double percentage, bool gps_lock) {
+void DisplayStatus(uint16_t percentage, bool gps_lock) {
     Serial.print(F("Battery: "));
     Serial.println(percentage);
     lcd.clear();
@@ -31,20 +31,20 @@ void DisplayStatus(double percentage, bool gps_lock) {
     lcd.print(F("GalavantingGnome"));
 
     lcd.setCursor(0, 1);
-    if (percentage >= 98.0) {
+    if (percentage >= 98) {
         lcd.write(BAT_FULL);
-    } else if (percentage >= 75.0) {
+    } else if (percentage >= 75) {
         lcd.write(BAT_THREE_QUARTERS);
-    } else if (percentage >= 50.0) {
+    } else if (percentage >= 50) {
         lcd.write(BAT_TWO_QUARTERS);
-    } else if (percentage >= 25.0) {
+    } else if (percentage >= 25) {
         lcd.write(BAT_ONE_QUARTERS);
     } else {
         lcd.write(BAT_EMPTY);
     }
 
     lcd.print(F(" "));
-    lcd.print(percentage, 1);
+    lcd.print(percentage);
     lcd.print(F("% "));
 
     if (gps_lock) {

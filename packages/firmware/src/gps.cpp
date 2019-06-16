@@ -11,20 +11,21 @@ gps_loc_t getGPS(Adafruit_FONA* fona) {
     return location;
 }
 
-StaticJsonDocument<JSON_OBJECT_SIZE(5)> convertLocation(gps_loc_t location) {
-    StaticJsonDocument<JSON_OBJECT_SIZE(5)> doc;
+StaticJsonDocument<JSON_OBJECT_SIZE(6)> convertLocation(gps_loc_t location, uint16_t percentage) {
+    StaticJsonDocument<JSON_OBJECT_SIZE(6)> doc;
 
     doc["lon"] = location.longitude;
     doc["lat"] = location.latitude;
     doc["kph"] = location.speed_kph;
     doc["heading"] = location.heading;
     doc["alt"] = location.altitude;
+    doc["bat"] = percentage;
 
     return doc;
 }
 
-String writeLocation(gps_loc_t location) {
-    auto location_data = convertLocation(location);
+String writeLocation(gps_loc_t location, uint16_t percentage) {
+    auto location_data = convertLocation(location, percentage);
     String converted;
     serializeJson(location_data, converted);
     serializeJson(location_data, Serial);
@@ -50,7 +51,9 @@ uint16_t sendLocation(Adafruit_FONA* fona) {
         return 800;
     }
 
-    auto converted = writeLocation(location);
+    uint16_t percentage;
+    fona->getBattPercent(&percentage);
+    auto converted = writeLocation(location, percentage);
 
     fona->setGPRSNetworkSettings(F("hologram"));
     fona->enableGPRS(true);

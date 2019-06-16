@@ -21,4 +21,4 @@ static LiquidCrystal lcd(LCD_RS, LCD_EN, LCD_DB4, LCD_DB5, LCD_DB6, LCD_DB7);
 extern uint8_t empty[8], one_quarter[8], two_quarters[8], three_quarters[8], full[8], gps_lock[8], gps_no_lock[8];
 
 void LcdInitialize();
-void DisplayStatus(double percentage, bool gps_lock = false);
+void DisplayStatus(uint16_t percentage, bool gps_lock = false);

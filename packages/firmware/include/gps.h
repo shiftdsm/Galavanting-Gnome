@@ -16,6 +16,6 @@ typedef struct {
 } gps_loc_t;
 
 gps_loc_t getGPS(Adafruit_FONA* fona);
-StaticJsonDocument<JSON_OBJECT_SIZE(5)> convertLocation(gps_loc_t location);
-String writeLocation(gps_loc_t location);
+StaticJsonDocument<JSON_OBJECT_SIZE(6)> convertLocation(gps_loc_t location, uint16_t percentage);
+String writeLocation(gps_loc_t location, uint16_t percentage);
 uint16_t sendLocation(Adafruit_FONA* fona);
