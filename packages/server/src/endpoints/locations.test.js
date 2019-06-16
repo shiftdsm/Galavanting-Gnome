@@ -32,6 +32,7 @@ describe('locations', () => {
         kph: 1.5,
         heading: 100.123,
         alt: 10.2,
+        battery: 42,
       },
     });
 

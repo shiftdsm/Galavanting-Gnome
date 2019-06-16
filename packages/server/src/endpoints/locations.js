@@ -39,6 +39,7 @@ const postLocation = {
         kph: Joi.number().precision(8).required(),
         heading: Joi.number().precision(8).required(),
         alt: Joi.number().precision(8).required(),
+        battery: Joi.number().required(),
       },
     },
   },
