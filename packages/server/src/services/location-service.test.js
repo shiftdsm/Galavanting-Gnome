@@ -14,6 +14,7 @@ describe('LocationService', () => {
         kph: 60,
         heading: 100,
         alt: 12,
+        battery: 100,
       });
 
       const [{ count: secondCount }] = await db('locations').count();
@@ -28,6 +29,7 @@ describe('LocationService', () => {
         kph: 0,
         heading: 0,
         alt: 0,
+        battery: 100,
       }).returning('id');
 
       const [newLocationId] = await LocationService.addLocation({
@@ -36,6 +38,7 @@ describe('LocationService', () => {
         kph: 100,
         heading: 0,
         alt: 100,
+        battery: 100,
       });
 
       const [prevLocation] = await db('locations').select('published_at').where('id', prevLocationId);
@@ -52,6 +55,7 @@ describe('LocationService', () => {
         kph: 0,
         heading: 0,
         alt: 0,
+        battery: 100,
       };
       const [prevLocationId] = await db('locations').insert(location).returning('id');
       await LocationService.addLocation(location);
@@ -68,6 +72,7 @@ describe('LocationService', () => {
         kph: 0,
         heading: 0,
         alt: 0,
+        battery: 100,
       };
 
       const [firstLocationId, secondLocationId, thirdLocationId] = await db('locations')

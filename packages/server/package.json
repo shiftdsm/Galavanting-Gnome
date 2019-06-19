@@ -8,7 +8,9 @@
     "lint": "eslint .",
     "db": "knex --cwd db",
     "test": "NODE_ENV=test jest",
-    "migrate": "yarn db migrate:latest --env development && yarn db migrate:latest --env test"
+    "db:migrate": "yarn db migrate:latest --env development && yarn db migrate:latest --env test",
+    "db:rollback": "yarn db migrate:rollback --env development && yarn db migrate:rollback --env test",
+    "db:seed": "yarn db seed:run"
   },
   "dependencies": {
     "@hapi/joi": "^15.0.2",
